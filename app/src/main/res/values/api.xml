@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="foursquare_client_id">
+        <!--LOCQ1IWUXYLH3BIUKU45FGYNOWMRUNHCMSCFVW2VD0R2FO4M-->
+        GJFZXAYYAUHP13EDSZ4TZRDWBQFZRH4QTZDWWAAIPCESAUTN
+    </string>
+    <string name="foursquare_client_secret">
+        <!--S4HDGAGDMJFHEQSGJFGTC5RU330MWT0KDSHCKOAFHL5JPCFQ-->
+        SI5D3OE2WNELYA5SB3ZWPXMSTQIY30ZDK5ZLJHRSK2SMT4RL
+    </string>
+
+</resources>

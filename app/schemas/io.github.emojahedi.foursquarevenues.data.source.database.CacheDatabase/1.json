@@ -1,0 +1,160 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "599ce253159dec0e5d79fb87faa9127c",
+    "entities": [
+      {
+        "tableName": "venue_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `cache_date` INTEGER, `name` TEXT NOT NULL, `contact_phone` TEXT NOT NULL, `contact_facebookUsername` TEXT NOT NULL, `rating` REAL NOT NULL, `photo0_prefix` TEXT NOT NULL, `photo0_suffix` TEXT NOT NULL, `photo0_width` INTEGER NOT NULL, `photo0_height` INTEGER NOT NULL, `formatted_address_line0` TEXT NOT NULL, `formatted_address_line1` TEXT NOT NULL, `formatted_address_line2` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cacheDate",
+            "columnName": "cache_date",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contactPhone",
+            "columnName": "contact_phone",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contactFacebookUsername",
+            "columnName": "contact_facebookUsername",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rating",
+            "columnName": "rating",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photo0_prefix",
+            "columnName": "photo0_prefix",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photo0_suffix",
+            "columnName": "photo0_suffix",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photo0_width",
+            "columnName": "photo0_width",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photo0_height",
+            "columnName": "photo0_height",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "formatted_address_line0",
+            "columnName": "formatted_address_line0",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "formatted_address_line1",
+            "columnName": "formatted_address_line1",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "formatted_address_line2",
+            "columnName": "formatted_address_line2",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "search_venue",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`searchTerm` TEXT NOT NULL, `venueId` TEXT NOT NULL, `orderInList` INTEGER NOT NULL, PRIMARY KEY(`searchTerm`, `venueId`), FOREIGN KEY(`venueId`) REFERENCES `venue_table`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "searchTerm",
+            "columnName": "searchTerm",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "venueId",
+            "columnName": "venueId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "orderInList",
+            "columnName": "orderInList",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "searchTerm",
+            "venueId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_search_venue_venueId",
+            "unique": false,
+            "columnNames": [
+              "venueId"
+            ],
+            "createSql": "CREATE  INDEX `index_search_venue_venueId` ON `${TABLE_NAME}` (`venueId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "venue_table",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "venueId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"599ce253159dec0e5d79fb87faa9127c\")"
+    ]
+  }
+}
